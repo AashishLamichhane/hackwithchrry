@@ -1,0 +1,218 @@
+<?php
+	session_start();
+	function get_user_issue_detail_count(){
+		$connection = mysqli_connect("localhost","root","");
+		$db = mysqli_select_db($connection,"pan");
+		$user_issue_detail_count = 0;
+		$query = "select count(*) as user_issue_detail_count from issued_detail where pan_id = $_SESSION[id]";
+		$query_run = mysqli_query($connection,$query);
+		while ($row = mysqli_fetch_assoc($query_run)){
+			$user_issue_detail_count = $row['user_issue_detail_count'];
+		}
+		return($user_issue_detail_count);
+	}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title> User Dashboard</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width,intial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap-4.4.1/css/bootstrap.min.css">
+  	<script type="text/javascript" src="bootstrap-4.4.1/js/juqery_latest.js"></script>
+  	<script type="text/javascript" src="bootstrap-4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="user_dashboard.php">Personal Account Number (PAN)</a>
+			</div>
+			<font style="color: white"><span><strong>Welcome: <?php echo $_SESSION['name'];?></strong></span></font>
+			<font style="color: white"><span><strong>Email: <?php echo $_SESSION['email'];?></strong></font>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li class="nav-item dropdown">
+	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown">My Profile </a>
+	        	<div class="dropdown-menu">
+	        		<a class="dropdown-item" href="view_profile.php">View Profile</a>
+	        		<div class="dropdown-divider"></div>
+	        		<a class="dropdown-item" href="edit_profile.php">Edit Profile</a>
+	        		<div class="dropdown-divider"></div>
+	        		<a class="dropdown-item" href="change_password.php">Change Password</a>
+	        	</div>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="logout.php">Logout</a>
+		      </li>
+		    </ul>
+		</div>
+	</nav><br>
+	<span><marquee>This is Personal account number. register opens at 10:00 AM and close at 4:00 PM</marquee></span><br><br>
+	<div class="row">
+		<div class="col-md-3" style="margin: 25px">
+			<div class="card bg-light" style="width: 300px">
+				<div class="card-header">Data Issued</div>	
+				<div class="card-body">
+					<p class="card-text">No of company issued: <?php echo get_user_issue_data_count();?></p>
+					<a class="btn btn-success" href="view_issued_data.php">View Issued Details</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-3"></div>
+	</div>
+	<!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      A Perfect Learning Center <br />
+                      <span>
+                        For Your Knowledge
+                      </span>
+                    </h1>
+                    <p>
+                      There are various type of courses you want to learn. We guide to graduation from basic level to higher.
+                  Here are Courses that you will learn in your subject or for your degree of Bsc(hons) cybersecurity and 
+                  Ethical Hacking.
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn-1">
+                        Read More
+                      </a>
+                      <a href="" class="btn-2">
+                        Contact us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      A Perfect Learning Center <br />
+                      <span>
+                        Keep in mind
+                      </span>
+                    </h1>
+                    <p>
+                      The program also covers the legal and ethical aspects of cyber security, including privacy laws and regulations. 
+                      Graduates of this program can pursue careers in cyber security and information technology, 
+                      such as cyber security analysts, information security analysts, network security engineers, and penetration testers..
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn-1">
+                        Read More
+                      </a>
+                      <a href="" class="btn-2">
+                        Contact us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      A Perfect Learning Center <br />
+                      <span>
+                        In Legal way
+                      </span>
+                    </h1>
+                    <p>
+                      The program combines theoretical knowledge with practical skills, 
+                      to enable students to analyze, detect, and mitigate cyber security risks..
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn-1">
+                        Read More
+                      </a>
+                      <a href="" class="btn-2">
+                        Contact us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      A Perfect Learning Center <br />
+                      <span>
+                        Not for Hacking Purposes
+                      </span>
+                    </h1>
+                    <p>
+                      practice of using hacking techniques for legitimate and lawful purposes,
+                       such as identifying vulnerabilities in computer systems and networks and 
+                       fixing them before they can be exploited by cybercriminals.
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn-1">
+                        Read More
+                      </a>
+                      <a href="" class="btn-2">
+                        Contact us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      A Perfect Learning Center <br />
+                      <span>
+                        For Your Knowledge
+                      </span>
+                    </h1>
+                    <p>
+                      There are various type of courses you want to learn. We guide to graduation from basic level to higher 
+                  Here are Courses that you will learn in your subject or for your degree of Bsc(hons) cybersecurity and 
+                  Ethical Hacking.
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn-1">
+                        Read More
+                      </a>
+                      <a href="" class="btn-2">
+                        Contact us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+</body>
+</html>
